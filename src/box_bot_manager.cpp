@@ -130,7 +130,7 @@ private:
 
   bool check_reached_goal(const geometry_msgs::msg::Point goal,
                           const geometry_msgs::msg::Point current_pos,
-                          std::string name, float delta_error = 0.4) {
+                          std::string name, float delta_error = 0.1) {
 
     // print_2Dposition(goal, "GOAL");
     // print_2Dposition(current_pos, "CURRENT_POS");
