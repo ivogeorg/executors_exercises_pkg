@@ -45,6 +45,12 @@ ament_target_dependencies(executor_example_5_node rclcpp)
 add_executable(executor_example_5_reentrant_node src/executor_example_5_reentrant.cpp)
 ament_target_dependencies(executor_example_5_reentrant_node rclcpp)
 
+add_executable(executor_example_5_mutuallyexclusive_node src/executor_example_5_mutuallyexclusive.cpp)
+ament_target_dependencies(executor_example_5_mutuallyexclusive_node rclcpp)
+
+add_executable(executor_example_5_mutuallyexclusive_multiple_node src/executor_example_5_mutuallyexclusive_multiple.cpp)
+ament_target_dependencies(executor_example_5_mutuallyexclusive_multiple_node rclcpp)
+
 install(TARGETS 
 		executor_example_1_node
 		executor_example_2_node
@@ -54,6 +60,8 @@ install(TARGETS
 		executor_example_4_singlethreaded_node
 		executor_example_5_node
 		executor_example_5_reentrant_node
+		executor_example_5_mutuallyexclusive_node
+		executor_example_5_mutuallyexclusive_multiple_node
 		DESTINATION lib/${PROJECT_NAME}
 )
 
