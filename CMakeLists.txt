@@ -9,6 +9,8 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -51,6 +53,12 @@ ament_target_dependencies(executor_example_5_mutuallyexclusive_node rclcpp)
 add_executable(executor_example_5_mutuallyexclusive_multiple_node src/executor_example_5_mutuallyexclusive_multiple.cpp)
 ament_target_dependencies(executor_example_5_mutuallyexclusive_multiple_node rclcpp)
 
+add_executable(box_bot_manager_node src/box_bot_manager.cpp)
+ament_target_dependencies(box_bot_manager_node rclcpp nav_msgs geometry_msgs)
+
+add_executable(wait_for_box_bots_arrive_node src/wait_for_box_bots_arrive.cpp)
+ament_target_dependencies(wait_for_box_bots_arrive_node rclcpp std_msgs)
+
 install(TARGETS 
 		executor_example_1_node
 		executor_example_2_node
@@ -62,6 +70,8 @@ install(TARGETS
 		executor_example_5_reentrant_node
 		executor_example_5_mutuallyexclusive_node
 		executor_example_5_mutuallyexclusive_multiple_node
+		box_bot_manager_node
+		wait_for_box_bots_arrive_node
 		DESTINATION lib/${PROJECT_NAME}
 )
 
