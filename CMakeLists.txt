@@ -8,6 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(nav_msgs REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -23,8 +24,28 @@ endif()
 add_executable(executor_example_1_node src/executor_example_1.cpp)
 ament_target_dependencies(executor_example_1_node rclcpp)
 
+add_executable(executor_example_2_node src/executor_example_2.cpp)
+ament_target_dependencies(executor_example_2_node rclcpp nav_msgs)
+
+add_executable(executor_example_3_node src/executor_example_3.cpp)
+ament_target_dependencies(executor_example_3_node rclcpp nav_msgs)
+
+add_executable(executor_example_3_static_node src/executor_example_3_static.cpp)
+ament_target_dependencies(executor_example_3_static_node rclcpp nav_msgs)
+
+add_executable(executor_example_4_node src/executor_example_4.cpp)
+ament_target_dependencies(executor_example_4_node rclcpp nav_msgs)
+
+add_executable(executor_example_4_singlethreaded_node src/executor_example_4_singlethreaded.cpp)
+ament_target_dependencies(executor_example_4_singlethreaded_node rclcpp nav_msgs)
+
 install(TARGETS 
 		executor_example_1_node
+		executor_example_2_node
+		executor_example_3_node
+		executor_example_3_static_node
+		executor_example_4_node
+		executor_example_4_singlethreaded_node
 		DESTINATION lib/${PROJECT_NAME}
 )
 
